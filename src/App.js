@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import './Theme/css/theme-dark.css'
+import './Theme/css/theme.css'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import {
@@ -10,12 +10,12 @@ import {
 } from 'react-transition-group';
 
 //Pages
-import { Home } from './Pages';
+import { Home, NewAgenda } from './Pages';
 
 //Components
 import { NavigationBar } from './Components';
 
-function App({ githubState }) {
+function App({  }) {
   return (
     <>
       <Router>
@@ -29,6 +29,7 @@ function App({ githubState }) {
             >
               <Switch location={location} >
                 <Route path='/' exact component={Home} />
+                <Route path='/new' exact component={NewAgenda} />
               </Switch>
             </CSSTransition>
           </TransitionGroup>
@@ -40,7 +41,6 @@ function App({ githubState }) {
 
 const mapStateToProps = (state) => {
   return {
-    githubState: state.githubState
   }
 }
 

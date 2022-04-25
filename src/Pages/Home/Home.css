@@ -1,0 +1,17 @@
+.home-container {
+
+}
+
+.home-container .warning{
+    color: var(--warning) !important
+}
+
+
+.home-container .success{
+    color: var(--success) !important
+}
+
+
+.home-container .danger{
+    color: var(--danger) !important
+}

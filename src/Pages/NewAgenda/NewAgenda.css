@@ -1,0 +1,12 @@
+.new-agenda-container {
+
+}
+
+.new-agenda-container #basic-addon1{
+    background-color: var(--gray);
+    color: var(--dark)
+}
+
+.new-agenda-container .dropdown-toggle::after{
+    content: "▼";
+}

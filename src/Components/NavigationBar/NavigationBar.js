@@ -8,14 +8,12 @@ export default function NavigationBar() {
             <Container fluid>
                 <Navbar.Brand to="/"></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse style={{marginRight: 0}} id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                <Navbar.Collapse style={{ marginRight: 0 }} id="basic-navbar-nav">
+                    <Nav className="me-auto align-items-center">
                         <Link className='nav-link' to="/">Home</Link>
-                        <Link className='nav-link' to="/about-me">About me</Link>
-                        <Link className='nav-link' to="/showcase">My works</Link>
-                        <div style={{ marginLeft: '12px' }}>
-                            <Button variant="primary">Contact me</Button>
-                        </div>
+                        <Link className='nav-link ml-4' to="/new">
+                            <Button variant="primary">New assignment!</Button>
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
