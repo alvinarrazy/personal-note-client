@@ -39,32 +39,41 @@ export const Home = ({ agendaState, completingAgenda }) => {
             <td className='col-3'>Actions</td>
           </tr>
         </thead>
-        <tbody>
-          {
-            agendaState.agendaLists.map((a, index) => {
-              return (
-                <tr key={index}>
-                  <td className='col-4'>{a.title}</td>
-                  <td className={`col-3 text-center ${getLvl(a.priority.lvl)}`}>{a.priority.name}</td>
-                  <td className='col-2 text-center'>{a.dueDate}</td>
-                  <td className='col'>
-                    <div className='row'>
-                      <div className='col d-flex justify-content-center'>
-                        <Button
-                          onClick={() => handleCompletingAgenda(index)}
-                          variant='success'
-                        >Done</Button>
-                      </div>
-                      {/* <div className='col'>
+        {
+          agendaState?.agendaLists?.length ?
+            <tbody>
+              {
+                agendaState.agendaLists.map((a, index) => {
+                  return (
+                    <tr key={index}>
+                      <td className='col-4'>{a.title}</td>
+                      <td className={`col-3 text-center ${getLvl(a.priority.lvl)}`}>{a.priority.name}</td>
+                      <td className='col-2 text-center'>{a.dueDate}</td>
+                      <td className='col'>
+                        <div className='row'>
+                          <div className='col d-flex justify-content-center'>
+                            <Button
+                              onClick={() => handleCompletingAgenda(index)}
+                              variant='success'
+                            >Done</Button>
+                          </div>
+                          {/* <div className='col'>
                         <Button variant='danger'>Delete</Button>
                       </div> */}
-                    </div>
-                  </td>
-                </tr>
-              )
-            })
-          }
-        </tbody>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })
+              }
+            </tbody>
+            :
+            <tr className='text-muted text-center'>
+              <td colSpan={4}>
+              No assigment
+              </td>
+            </tr>
+        }
       </Table>
     </Container>
   )

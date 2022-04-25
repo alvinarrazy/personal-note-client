@@ -10,7 +10,6 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 const setInitialData = (payload) => {
-    console.log('payload on reducer index:', payload)
     return {
         type: types.SET_INITIAL,
         agendaListsData: payload,
