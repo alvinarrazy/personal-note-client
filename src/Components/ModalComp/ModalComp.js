@@ -8,7 +8,7 @@ export default function ModalComp(props) {
     <div className='modal-container'>
       <Modal size={props.size} scrollable show={props.show} onHide={props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>ERROR!</Modal.Title>
+          <Modal.Title>Message</Modal.Title>
         </Modal.Header>
         <Modal.Body>{props.children}</Modal.Body>
         <Modal.Footer>

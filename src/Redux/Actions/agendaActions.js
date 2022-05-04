@@ -1,5 +1,13 @@
 import types from "../Constants"
 
+export const resetAgendaState = () => {
+    return dispatch => {
+        dispatch({
+            type: types.RESET_AGENDA_STATE
+        })
+    }
+}
+
 export const addNewAgenda = (newAgenda) => {
     return async (dispatch) => {
         dispatch({

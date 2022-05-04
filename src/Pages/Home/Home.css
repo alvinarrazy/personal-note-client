@@ -15,3 +15,7 @@
 .home-container .danger{
     color: var(--danger) !important
 }
+
+.home-container a{
+    cursor: pointer;
+}

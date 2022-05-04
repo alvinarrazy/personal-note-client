@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Spinner, Container, Card, Button, InputGroup, FormControl, Form, Dropdown, DropdownButton } from 'react-bootstrap'
 import moment from 'moment'
 import { ModalComp } from '../../Components'
 import './NewAgenda.css'
-import { addNewAgenda } from '../../Redux/Actions/agendaActions'
+import { addNewAgenda, resetAgendaState } from '../../Redux/Actions/agendaActions'
 
-export const NewAgenda = ({ addNewAgenda, agendaState }) => {
+export const NewAgenda = ({ addNewAgenda, agendaState, resetAgendaState }) => {
   const currentDate = moment().format('LL')
   const [input, setInput] = React.useState({
     title: '',
@@ -19,6 +19,11 @@ export const NewAgenda = ({ addNewAgenda, agendaState }) => {
 
   const [modalMessage, setModalMessage] = React.useState(null)
 
+  function closeModal() {
+    setModalMessage(null)
+    resetAgendaState()
+  }
+
   function handleOnChange(target) {
     const { value, name } = target
     setInput({
@@ -26,6 +31,12 @@ export const NewAgenda = ({ addNewAgenda, agendaState }) => {
       [name]: value
     })
   }
+
+  useEffect(() => {
+    if(agendaState.agendaAdded){
+      setModalMessage('Agenda successfully added!')
+    }
+  }, [agendaState.agendaAdded])
 
   function handleSubmit() {
     if (!!input.title?.length === false) return setModalMessage('Fill all the data!')
@@ -70,11 +81,9 @@ export const NewAgenda = ({ addNewAgenda, agendaState }) => {
     )
   }
 
-  console.log(agendaState.agendaLists)
-
   return (
     <Container className='p-4 new-agenda-container'>
-      <ModalComp size={'md'} show={!!modalMessage} handleClose={() => setModalMessage(null)}>
+      <ModalComp size={'md'} show={!!modalMessage} handleClose={() => closeModal()}>
         <p>{modalMessage}</p>
       </ModalComp>
 
@@ -120,7 +129,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewAgenda: (agenda) => dispatch(addNewAgenda(agenda))
+    addNewAgenda: (agenda) => dispatch(addNewAgenda(agenda)),
+    resetAgendaState: () => dispatch(resetAgendaState())
   }
 }
 
